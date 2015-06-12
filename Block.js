@@ -1,15 +1,17 @@
 function Block(position, size, scene)
 {
-    this.position = position;
     this.size = size;
     this.scene = scene;
 
     this.update = function()
     {
-        //Update Mesh
-        this.mesh.position.x = this.position.x;
-        this.mesh.position.y = this.position.y;
-        this.mesh.position.z = this.position.z;
+      
+    };
+
+    this.setPosition = function(position){
+      this.mesh.position.x = position.x;
+      this.mesh.position.y = position.y;
+      this.mesh.position.z = position.z;
     };
 
     this.setSize = function(h){
@@ -18,7 +20,7 @@ function Block(position, size, scene)
 
       this.init();
       this.update();
-      
+
       this.scene.add(this.mesh);
     };
 
@@ -30,6 +32,7 @@ function Block(position, size, scene)
     };
 
     this.init();
+    this.setPosition(position);
     this.update();
 
     this.scene.add(this.mesh);
