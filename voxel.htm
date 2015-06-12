@@ -43,8 +43,19 @@
 				light.castShadow = true;
 				scene.add( light );
 
-        var block = new Block(new THREE.Vector3(0, 0, 0), new THREE.Vector3(10, 10, 10));
-        block.addToScene(scene);
+        /*  Coole Dinge  */
+
+        for(var x = 0; x < 3; x++)
+        {
+          for(var y = 0; y < 3; y++)
+          {
+            console.log(x * 15 + " " + y * 15);
+            var block = new Block(new THREE.Vector3(x * 11, y * 11, 0), new THREE.Vector3(10, 10, 10));
+            block.addToScene(scene);
+          }
+        }
+
+        /*  Coole Dinge  */
 
         //render scene
         var render = function () {
