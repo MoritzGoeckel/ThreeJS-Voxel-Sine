@@ -5,13 +5,17 @@ function Block(position, size, scene)
 
     this.update = function()
     {
-      
+
     };
 
     this.setPosition = function(position){
       this.mesh.position.x = position.x;
       this.mesh.position.y = position.y;
       this.mesh.position.z = position.z;
+    };
+
+    this.setZ = function(z){
+      this.mesh.position.z = z;
     };
 
     this.setSize = function(h){
