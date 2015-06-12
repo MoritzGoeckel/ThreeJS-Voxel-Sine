@@ -45,15 +45,21 @@
 
         /*  Coole Dinge  */
 
+        var blocks = [];
         for(var x = 0; x < 3; x++)
         {
+          var row = [];
           for(var y = 0; y < 3; y++)
           {
-            console.log(x * 15 + " " + y * 15);
-            var block = new Block(new THREE.Vector3(x * 11, y * 11, 0), new THREE.Vector3(10, 10, 10));
-            block.addToScene(scene);
+            var block = new Block(new THREE.Vector3(x * 11, y * 11, 0), new THREE.Vector3(10, 10, 10), scene);
+            row.push(block);
           }
+          blocks.push(row);
         }
+
+        blocks[0][0].setSize(30);
+
+        console.log(blocks);
 
         /*  Coole Dinge  */
 
