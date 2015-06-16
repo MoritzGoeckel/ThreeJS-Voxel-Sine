@@ -65,6 +65,9 @@
 
         /*  Coole Dinge  */
 
+        AnzahlWellen = 3;
+        Stearke = 70;
+
         offset = 0;
         delta = 0.01;
 
@@ -87,7 +90,7 @@
                 distance = maxDistance - distance;
                 var quotient = distance / maxDistance;
 
-                blocks[x][y].setZ(quotient * offset * 100 * Math.sin((2 * Math.PI) * quotient));
+                blocks[x][y].setZ(quotient * offset * Stearke * Math.sin((2 * Math.PI * AnzahlWellen) * quotient));
               }
             }
           }
