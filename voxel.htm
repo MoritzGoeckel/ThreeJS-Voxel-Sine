@@ -46,11 +46,14 @@
 
         /*  Coole Dinge  */
 
+        var size = 10;
+        var mid = 5;
+
         var blocks = [];
-        for(var x = 0; x < 3; x++)
+        for(var x = 0; x < size; x++)
         {
           var row = [];
-          for(var y = 0; y < 3; y++)
+          for(var y = 0; y < size; y++)
           {
             var block = new Block(new THREE.Vector3(x * 11, y * 11, 0), new THREE.Vector3(10, 10, 10), scene);
             row.push(block);
@@ -58,16 +61,44 @@
           blocks.push(row);
         }
 
-        var size = 40;
-        blocks[0][0].setHeightAndKeepPos(size);
-
-        console.log(blocks);
+        //console.log(blocks);
 
         /*  Coole Dinge  */
 
+        offset = 0;
+        delta = 1;
+
+        window.setInterval(function(){
+          offset += delta;
+          if(offset > 100 || offset < -100)
+            delta = delta * -1;
+        }, 10);
+
+        var onRender = function(){
+          console.log(offset);
+
+          var maxDistance = Math.sqrt(Math.pow(size - mid,2) + Math.pow(size - mid,2));
+          for(var x = 0; x < size; x++)
+          {
+            for(var y = 0; y < size; y++)
+            {
+              var distance = Math.sqrt(Math.pow(x - mid,2) + Math.pow(y - mid,2));
+              distance = maxDistance - distance;
+
+              //var distance_quo = mid / distance;
+              //var sinCurve = Math.sin((2 * Math.PI) * distance_quo);
+
+              var quotient = distance / maxDistance;
+
+              blocks[x][y].setZ(quotient * offset * 0.5);
+            }
+          }
+        }
 
         //render scene
-        var render = function () {
+        var render = function ()
+        {
+            onRender();
             requestAnimationFrame(render);
             renderer.render(scene, camera);
         };

@@ -18,11 +18,11 @@ function Block(position, size, scene)
       this.mesh.position.z = z;
     };
 
-    this.setHeightAndKeepPos = function(newHeigt){
+    this.setHeightAndKeepPos = function(newHeight){
       var oldHeight = this.size.z;
 
-      this.setHeight(newHeigt);
-      this.setZ((newHeigt - oldHeight) / 2);
+      this.setHeight(newHeight);
+      this.setZ((newHeight - oldHeight) / 2);
     };
 
     this.setHeight = function(height){
