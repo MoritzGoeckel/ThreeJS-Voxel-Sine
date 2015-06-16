@@ -46,8 +46,8 @@
 
         /*  Coole Dinge  */
 
-        var size = 10;
-        var mid = 5;
+        var size = 40;
+        var mid = size / 2;
 
         var blocks = [];
         for(var x = 0; x < size; x++)
@@ -66,31 +66,29 @@
         /*  Coole Dinge  */
 
         offset = 0;
-        delta = 1;
+        delta = 0.01;
 
         window.setInterval(function(){
           offset += delta;
-          if(offset > 100 || offset < -100)
+          if(offset >= 1 || offset <= -1)
             delta = delta * -1;
-        }, 10);
+        }, 20);
 
+        oldOffset = 0;
         var onRender = function(){
-          console.log(offset);
-
-          var maxDistance = Math.sqrt(Math.pow(size - mid,2) + Math.pow(size - mid,2));
-          for(var x = 0; x < size; x++)
+          if(offset != oldOffset)
           {
-            for(var y = 0; y < size; y++)
+            var maxDistance = Math.sqrt(Math.pow(size - mid,2) + Math.pow(size - mid,2));
+            for(var x = 0; x < size; x++)
             {
-              var distance = Math.sqrt(Math.pow(x - mid,2) + Math.pow(y - mid,2));
-              distance = maxDistance - distance;
+              for(var y = 0; y < size; y++)
+              {
+                var distance = Math.sqrt(Math.pow(x - mid,2) + Math.pow(y - mid,2));
+                distance = maxDistance - distance;
+                var quotient = distance / maxDistance;
 
-              //var distance_quo = mid / distance;
-              //var sinCurve = Math.sin((2 * Math.PI) * distance_quo);
-
-              var quotient = distance / maxDistance;
-
-              blocks[x][y].setZ(quotient * offset * 0.5);
+                blocks[x][y].setZ(quotient * offset * 100 * Math.sin((2 * Math.PI) * quotient));
+              }
             }
           }
         }
