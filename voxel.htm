@@ -58,11 +58,8 @@
           blocks.push(row);
         }
 
-        var oldSize = 10;
         var size = 40;
-
-        blocks[0][0].setSize(size);
-        blocks[0][0].setZ((size - oldSize) / 2);
+        blocks[0][0].setHeightAndKeepPos(size);
 
         console.log(blocks);
 
