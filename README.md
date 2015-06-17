@@ -1,4 +1,5 @@
-# ThreeJS-Voxel
+# ThreeJS-Voxel-Sine
+This shows a sine wave on a gird of cubes. Animated by time.
 
 ##Screenshots:
 ![alt tag](https://cloud.githubusercontent.com/assets/9058095/8204541/a3dbef92-14e9-11e5-87ba-adecc06f1ea9.png)
